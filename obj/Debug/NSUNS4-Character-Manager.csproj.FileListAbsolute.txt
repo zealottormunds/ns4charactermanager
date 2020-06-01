@@ -1,0 +1,15 @@
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\NSUNS4 Character Manager.exe
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\NSUNS4 Character Manager.pdb
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\System.dll
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\System.Drawing.dll
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\System.Windows.Forms.dll
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-Manager.csprojAssemblyReference.cache
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Main.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_DuelPlayerParamEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_RosterEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_SpcloadEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-Manager.csproj.GenerateResource.cache
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-Manager.csproj.CoreCompileInputs.cache
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-Manager.csproj.CopyComplete
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4 Character Manager.exe
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4 Character Manager.pdb
