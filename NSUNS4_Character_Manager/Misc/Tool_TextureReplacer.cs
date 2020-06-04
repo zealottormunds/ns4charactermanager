@@ -39,7 +39,7 @@ namespace NSUNS4_Character_Manager.Misc
             0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00,
             0x00, 0x00, 0x00, 0xF8, 0x00, 0x00, 0xE0, 0x07, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00
+            0x00
         };
 
         public byte[] header_dxt1 = new byte[]
@@ -111,6 +111,20 @@ namespace NSUNS4_Character_Manager.Misc
             int textureCount = 0;
 
             ntp3Indices = Main.b_FindBytesList(fileBytes, Encoding.ASCII.GetBytes("NTP3"), fileStart);
+
+            List<string> textureNames = new List<string>();
+            List<string> filePaths = XfbinParser.GetPathList(fileBytes);
+            for(int x = 0; x < filePaths.Count; x++)
+            {
+                if(filePaths[x].Substring(filePaths[x].Length - 3, 3) == "nut")
+                {
+                    string[] spl = filePaths[x].Split('/');
+                    if (spl.Length < 2) spl = filePaths[x].Split('\\');
+
+                    textureNames.Add(spl[spl.Length - 1]);
+                }
+            }
+
             ntp3Size = new List<int>();
             gidxCount = new List<int>();
             gidxIndices = new List<List<int>>();
@@ -118,7 +132,7 @@ namespace NSUNS4_Character_Manager.Misc
             textureData = new List<List<byte[]>>();
 
             for (int x = 0; x < ntp3Indices.Count; x++)
-            {                
+            {
                 int size = Main.b_ReadIntRev(fileBytes, ntp3Indices[x] - 0x4);
                 byte count = fileBytes[ntp3Indices[x] + 0x7];
 
@@ -176,7 +190,7 @@ namespace NSUNS4_Character_Manager.Misc
                 for (int y = 0; y < count; y++)
                 {
                     listBox1.Items.Add(
-                        "Texture " + x.ToString() + " " + y.ToString() + " " +
+                        textureNames[x] + " " + x.ToString() + " " + y.ToString() + " " +
                         "- NTP3: " + ntp3Indices[x].ToString("X2") + 
                         ", GIDX: " + gidxIndices[x][y].ToString("X2") + 
                         ", Size: " + gidxSizes[x][y].ToString("X2"));
@@ -277,6 +291,8 @@ namespace NSUNS4_Character_Manager.Misc
             actual = Main.b_ReplaceBytes(actual, resx, 0x10, 1);
             actual = Main.b_ReplaceBytes(actual, sizet, 0x14, 1);
             actual = Main.b_AddBytes(actual, textureData[ntp3][gidx]);
+
+            if (textype == 8) actual = Main.b_AddBytes(actual, new byte[] { 0 });
 
             SaveFileDialog s = new SaveFileDialog();
             if (path == "") s.ShowDialog();
