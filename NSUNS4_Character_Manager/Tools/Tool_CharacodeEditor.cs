@@ -58,15 +58,18 @@ namespace NSUNS4_Character_Manager
 			FileOpen = true;
 		}
 
-		public void OpenFile()
+		public void OpenFile(string path = "")
 		{
 			OpenFileDialog o = new OpenFileDialog();
 			o.DefaultExt = "xfbin";
-			o.ShowDialog();
-			if (!(o.FileName != "") || !File.Exists(o.FileName))
-			{
-				return;
-			}
+
+            if(path == "") o.ShowDialog();
+            else o.FileName = path;
+
+            if (!(o.FileName != "") || !File.Exists(o.FileName))
+            {
+                return;
+            }
 
             ListBox1.Items.Clear();
             FilePath = o.FileName;
@@ -93,7 +96,7 @@ namespace NSUNS4_Character_Manager
 				}
 
                 FileOpen = true;
-                MessageBox.Show("Characode contains " + CharacterCount + " character IDs.");
+                if (this.Visible) MessageBox.Show("Characode contains " + CharacterCount + " character IDs.");
 			}
 			else
 			{
@@ -182,7 +185,7 @@ namespace NSUNS4_Character_Manager
 				}
 				File.Copy(FilePath, FilePath + ".backup");
 				File.WriteAllBytes(FilePath, ConvertToFile());
-				MessageBox.Show("File saved to " + FilePath + ".");
+                if (this.Visible) MessageBox.Show("File saved to " + FilePath + ".");
 			}
 			else
 			{
@@ -371,103 +374,135 @@ namespace NSUNS4_Character_Manager
 
 		private void InitializeComponent()
 		{
-			ListBox1 = new System.Windows.Forms.ListBox();
-			button2 = new System.Windows.Forms.Button();
-			button1 = new System.Windows.Forms.Button();
-			menuStrip1 = new System.Windows.Forms.MenuStrip();
-			fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			newCharacodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			openCharacodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			textBox1 = new System.Windows.Forms.TextBox();
-			menuStrip1.SuspendLayout();
-			SuspendLayout();
-			ListBox1.FormattingEnabled = true;
-			ListBox1.Items.AddRange(new object[1]
-			{
-				"No file loaded..."
-			});
-			ListBox1.Location = new System.Drawing.Point(13, 29);
-			ListBox1.Name = "ListBox1";
-			ListBox1.Size = new System.Drawing.Size(273, 329);
-			ListBox1.TabIndex = 0;
-			button2.Location = new System.Drawing.Point(12, 390);
-			button2.Name = "button2";
-			button2.Size = new System.Drawing.Size(274, 23);
-			button2.TabIndex = 2;
-			button2.Text = "Remove selected ID";
-			button2.UseVisualStyleBackColor = true;
-			button2.Click += new System.EventHandler(button2_Click);
-			button1.Location = new System.Drawing.Point(119, 364);
-			button1.Name = "button1";
-			button1.Size = new System.Drawing.Size(167, 23);
-			button1.TabIndex = 3;
-			button1.Text = "Add new ID";
-			button1.UseVisualStyleBackColor = true;
-			button1.Click += new System.EventHandler(button1_Click);
-			menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[1]
-			{
-				fileToolStripMenuItem
-			});
-			menuStrip1.Location = new System.Drawing.Point(0, 0);
-			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new System.Drawing.Size(298, 24);
-			menuStrip1.TabIndex = 4;
-			menuStrip1.Text = "menuStrip1";
-			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[5]
-			{
-				newCharacodeFileToolStripMenuItem,
-				openCharacodeToolStripMenuItem,
-				saveToolStripMenuItem,
-				saveAsToolStripMenuItem,
-				closeToolStripMenuItem
-			});
-			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			fileToolStripMenuItem.Text = "File";
-			newCharacodeFileToolStripMenuItem.Name = "newCharacodeFileToolStripMenuItem";
-			newCharacodeFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			newCharacodeFileToolStripMenuItem.Text = "New";
-			newCharacodeFileToolStripMenuItem.Click += new System.EventHandler(newCharacodeFileToolStripMenuItem_Click);
-			openCharacodeToolStripMenuItem.Name = "openCharacodeToolStripMenuItem";
-			openCharacodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			openCharacodeToolStripMenuItem.Text = "Open";
-			openCharacodeToolStripMenuItem.Click += new System.EventHandler(openCharacodeToolStripMenuItem_Click);
-			saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			saveToolStripMenuItem.Text = "Save";
-			saveToolStripMenuItem.Click += new System.EventHandler(saveToolStripMenuItem_Click);
-			saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			saveAsToolStripMenuItem.Text = "Save As...";
-			saveAsToolStripMenuItem.Click += new System.EventHandler(saveAsToolStripMenuItem_Click);
-			closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-			closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			closeToolStripMenuItem.Text = "Close File";
-			closeToolStripMenuItem.Click += new System.EventHandler(closeToolStripMenuItem_Click);
-			textBox1.Location = new System.Drawing.Point(13, 366);
-			textBox1.MaxLength = 8;
-			textBox1.Name = "textBox1";
-			textBox1.Size = new System.Drawing.Size(100, 20);
-			textBox1.TabIndex = 5;
-			base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new System.Drawing.Size(298, 423);
-			base.Controls.Add(textBox1);
-			base.Controls.Add(button1);
-			base.Controls.Add(button2);
-			base.Controls.Add(ListBox1);
-			base.Controls.Add(menuStrip1);
-			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			base.MainMenuStrip = menuStrip1;
-			base.Name = "Tool_CharacodeEditor";
-			Text = "Characode Editor";
-			menuStrip1.ResumeLayout(false);
-			menuStrip1.PerformLayout();
-			ResumeLayout(false);
-			PerformLayout();
+            this.ListBox1 = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCharacodeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openCharacodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // ListBox1
+            // 
+            this.ListBox1.FormattingEnabled = true;
+            this.ListBox1.Items.AddRange(new object[] {
+            "No file loaded..."});
+            this.ListBox1.Location = new System.Drawing.Point(13, 29);
+            this.ListBox1.Name = "ListBox1";
+            this.ListBox1.Size = new System.Drawing.Size(273, 329);
+            this.ListBox1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 390);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(274, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Remove selected ID";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(119, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Add new ID";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(298, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCharacodeFileToolStripMenuItem,
+            this.openCharacodeToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newCharacodeFileToolStripMenuItem
+            // 
+            this.newCharacodeFileToolStripMenuItem.Name = "newCharacodeFileToolStripMenuItem";
+            this.newCharacodeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.newCharacodeFileToolStripMenuItem.Text = "New";
+            this.newCharacodeFileToolStripMenuItem.Click += new System.EventHandler(this.newCharacodeFileToolStripMenuItem_Click);
+            // 
+            // openCharacodeToolStripMenuItem
+            // 
+            this.openCharacodeToolStripMenuItem.Name = "openCharacodeToolStripMenuItem";
+            this.openCharacodeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.openCharacodeToolStripMenuItem.Text = "Open";
+            this.openCharacodeToolStripMenuItem.Click += new System.EventHandler(this.openCharacodeToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.closeToolStripMenuItem.Text = "Close File";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(13, 366);
+            this.textBox1.MaxLength = 8;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // Tool_CharacodeEditor
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(298, 423);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ListBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Tool_CharacodeEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Characode Editor";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 		}
 	}
 }

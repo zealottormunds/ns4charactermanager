@@ -28,7 +28,7 @@ namespace NSUNS4_Character_Manager
 
 		private IContainer components = null;
 
-		private ListBox ListBox1;
+		public ListBox ListBox1;
 
 		private Button button1;
 
@@ -106,13 +106,19 @@ namespace NSUNS4_Character_Manager
 			t_rosterpage.Value = 0m;
 		}
 
-		public void OpenFile()
+		public void OpenFile(string basepath = "")
 		{
 			NewFile();
 			FileOpen = false;
 			OpenFileDialog o = new OpenFileDialog();
 			o.DefaultExt = "xfbin";
-			o.ShowDialog();
+
+            if(basepath != "")
+            {
+                o.FileName = basepath;
+            }
+			else o.ShowDialog();
+
 			if (o.FileName != "" && File.Exists(o.FileName))
 			{
 				FilePath = o.FileName;
@@ -830,7 +836,7 @@ namespace NSUNS4_Character_Manager
 				}
 				File.Copy(FilePath, FilePath + ".backup");
 				File.WriteAllBytes(FilePath, ConvertToFile());
-				MessageBox.Show("File saved to " + FilePath + ".");
+				if(this.Visible) MessageBox.Show("File saved to " + FilePath + ".");
 			}
 			else
 			{
@@ -891,7 +897,7 @@ namespace NSUNS4_Character_Manager
 			ListBox1.Items.Add("Page: " + PageCount + ", Pos: " + Position.ToString("X2") + ", Char: " + Name + ", Cost: " + CostumeID);
 			EntryCount++;
             ListBox1.SelectedIndex = EntryCount - 1;
-			MessageBox.Show("Entry added.");
+			if(this.Visible) MessageBox.Show("Entry added.");
 		}
 
 		public void RemoveEntry(int Index)
@@ -1204,35 +1210,35 @@ namespace NSUNS4_Character_Manager
             // 
             this.newToolStripMenuItem.Enabled = false;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.closeToolStripMenuItem.Text = "Close File";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -1408,6 +1414,7 @@ namespace NSUNS4_Character_Manager
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Tool_RosterEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Character Roster Manager (CharacterSelectParam.xfbin)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

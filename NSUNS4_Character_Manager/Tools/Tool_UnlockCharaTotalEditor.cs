@@ -702,135 +702,169 @@ namespace NSUNS4_Character_Manager
 
 		private void InitializeComponent()
 		{
-			ListBox1 = new System.Windows.Forms.ListBox();
-			menuStrip1 = new System.Windows.Forms.MenuStrip();
-			fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			button1 = new System.Windows.Forms.Button();
-			button2 = new System.Windows.Forms.Button();
-			label1 = new System.Windows.Forms.Label();
-			numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-			menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-			((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-			SuspendLayout();
-			ListBox1.FormattingEnabled = true;
-			ListBox1.Items.AddRange(new object[1]
-			{
-				"No file loaded..."
-			});
-			ListBox1.Location = new System.Drawing.Point(12, 34);
-			ListBox1.Name = "ListBox1";
-			ListBox1.Size = new System.Drawing.Size(343, 342);
-			ListBox1.TabIndex = 0;
-			menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[1]
-			{
-				fileToolStripMenuItem
-			});
-			menuStrip1.Location = new System.Drawing.Point(0, 0);
-			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new System.Drawing.Size(367, 24);
-			menuStrip1.TabIndex = 1;
-			menuStrip1.Text = "menuStrip1";
-			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[5]
-			{
-				newToolStripMenuItem,
-				openToolStripMenuItem,
-				saveToolStripMenuItem,
-				saveAsToolStripMenuItem,
-				closeToolStripMenuItem
-			});
-			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			fileToolStripMenuItem.Text = "File";
-			newToolStripMenuItem.Name = "newToolStripMenuItem";
-			newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			newToolStripMenuItem.Text = "New";
-			newToolStripMenuItem.Click += new System.EventHandler(newCharacodeFileToolStripMenuItem_Click);
-			openToolStripMenuItem.Name = "openToolStripMenuItem";
-			openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			openToolStripMenuItem.Text = "Open";
-			openToolStripMenuItem.Click += new System.EventHandler(openCharacodeToolStripMenuItem_Click);
-			saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			saveToolStripMenuItem.Text = "Save";
-			saveToolStripMenuItem.Click += new System.EventHandler(saveToolStripMenuItem_Click);
-			saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			saveAsToolStripMenuItem.Text = "Save As...";
-			saveAsToolStripMenuItem.Click += new System.EventHandler(saveAsToolStripMenuItem_Click);
-			closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-			closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			closeToolStripMenuItem.Text = "Close File";
-			closeToolStripMenuItem.Click += new System.EventHandler(closeToolStripMenuItem_Click);
-			button1.Location = new System.Drawing.Point(12, 410);
-			button1.Name = "button1";
-			button1.Size = new System.Drawing.Size(343, 22);
-			button1.TabIndex = 2;
-			button1.Text = "Add unlock section";
-			button1.UseVisualStyleBackColor = true;
-			button1.Click += new System.EventHandler(button1_Click);
-			button2.Location = new System.Drawing.Point(12, 438);
-			button2.Name = "button2";
-			button2.Size = new System.Drawing.Size(343, 23);
-			button2.TabIndex = 3;
-			button2.Text = "Remove selected unlock section";
-			button2.UseVisualStyleBackColor = true;
-			button2.Click += new System.EventHandler(button2_Click);
-			label1.AutoSize = true;
-			label1.Location = new System.Drawing.Point(9, 387);
-			label1.Name = "label1";
-			label1.Size = new System.Drawing.Size(207, 13);
-			label1.TabIndex = 5;
-			label1.Text = "Preset ID for new unlock: (Example: 7B01)";
-			numericUpDown1.Hexadecimal = true;
-			numericUpDown1.Location = new System.Drawing.Point(220, 384);
-			numericUpDown1.Maximum = new decimal(new int[4]
-			{
-				255,
-				0,
-				0,
-				0
-			});
-			numericUpDown1.Name = "numericUpDown1";
-			numericUpDown1.Size = new System.Drawing.Size(63, 20);
-			numericUpDown1.TabIndex = 6;
-			numericUpDown2.Hexadecimal = true;
-			numericUpDown2.Location = new System.Drawing.Point(289, 384);
-			numericUpDown2.Maximum = new decimal(new int[4]
-			{
-				255,
-				0,
-				0,
-				0
-			});
-			numericUpDown2.Name = "numericUpDown2";
-			numericUpDown2.Size = new System.Drawing.Size(66, 20);
-			numericUpDown2.TabIndex = 7;
-			base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new System.Drawing.Size(367, 474);
-			base.Controls.Add(numericUpDown2);
-			base.Controls.Add(numericUpDown1);
-			base.Controls.Add(label1);
-			base.Controls.Add(button2);
-			base.Controls.Add(button1);
-			base.Controls.Add(ListBox1);
-			base.Controls.Add(menuStrip1);
-			base.MainMenuStrip = menuStrip1;
-			base.Name = "Tool_UnlockCharaTotalEditor";
-			Text = "Unlock Chara Total Editor";
-			menuStrip1.ResumeLayout(false);
-			menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-			((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-			ResumeLayout(false);
-			PerformLayout();
+            this.ListBox1 = new System.Windows.Forms.ListBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ListBox1
+            // 
+            this.ListBox1.FormattingEnabled = true;
+            this.ListBox1.Items.AddRange(new object[] {
+            "No file loaded..."});
+            this.ListBox1.Location = new System.Drawing.Point(12, 34);
+            this.ListBox1.Name = "ListBox1";
+            this.ListBox1.Size = new System.Drawing.Size(343, 342);
+            this.ListBox1.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(367, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newCharacodeFileToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openCharacodeToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.closeToolStripMenuItem.Text = "Close File";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(343, 22);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Add unlock section";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 438);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(343, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Remove selected unlock section";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 387);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(207, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Preset ID for new unlock: (Example: 7B01)";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Hexadecimal = true;
+            this.numericUpDown1.Location = new System.Drawing.Point(220, 384);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown1.TabIndex = 6;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Hexadecimal = true;
+            this.numericUpDown2.Location = new System.Drawing.Point(289, 384);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(66, 20);
+            this.numericUpDown2.TabIndex = 7;
+            // 
+            // Tool_UnlockCharaTotalEditor
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(367, 474);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ListBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "Tool_UnlockCharaTotalEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Unlock Chara Total Editor";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 		}
 	}
 }

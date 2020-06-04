@@ -11,100 +11,58 @@ namespace NSUNS4_Character_Manager
 	public class Tool_DuelPlayerParamEditor : Form
 	{
 		public bool FileOpen = false;
-
 		public string FilePath = "";
-
 		public int EntryCount = 0;
-
 		public List<string> BinPath = new List<string>();
-
 		public List<string> BinName = new List<string>();
-
 		public List<byte[]> Data = new List<byte[]>();
-
 		public List<string> CharaList = new List<string>();
-
 		public List<string[]> CostumeList = new List<string[]>();
-
 		public List<string[]> AwkCostumeList = new List<string[]>();
-
 		public List<string> DefaultAssist1 = new List<string>();
-
 		public List<string> DefaultAssist2 = new List<string>();
-
 		public List<string> AwkAction = new List<string>();
-
 		public List<string[]> ItemList = new List<string[]>();
-
 		public List<byte[]> ItemCount = new List<byte[]>();
+        public List<string> Partner = new List<string>();
 
-		private IContainer components = null;
-
-		private ListBox listBox1;
-
+        private IContainer components = null;
+		public ListBox listBox1;
 		private Button button1;
-
 		private Button button2;
-
 		private Button button3;
-
 		private MenuStrip menuStrip1;
-
 		private ToolStripMenuItem fileToolStripMenuItem;
-
 		private ToolStripMenuItem newToolStripMenuItem;
-
 		private ToolStripMenuItem openToolStripMenuItem;
-
 		private ToolStripMenuItem saveToolStripMenuItem;
-
 		private ToolStripMenuItem saveAsToolStripMenuItem;
-
 		private ToolStripMenuItem closeToolStripMenuItem;
-
 		private Label label1;
-
 		private TextBox w_characodeid;
-
 		private Button b_costumeids;
-
 		private Button b_awkcostumeids;
-
 		private TextBox w_awkaction;
-
 		private Label label2;
-
 		private TextBox w_defaultassist1;
-
 		private Label label3;
-
 		private TextBox w_defaultassist2;
-
 		private Label label4;
-
 		private TextBox w_item1;
-
 		private Label label5;
-
 		private Label label6;
-
 		private Label label7;
-
 		private Label label8;
-
 		private NumericUpDown w_itemc1;
-
 		private NumericUpDown w_itemc2;
-
 		private TextBox w_item2;
-
 		private NumericUpDown w_itemc3;
-
 		private TextBox w_item3;
-
 		private NumericUpDown w_itemc4;
         private TextBox w_charaprmbas;
         private Label label9;
+        private TextBox w_partner;
+        private Label label10;
         private TextBox w_item4;
 
 		public Tool_DuelPlayerParamEditor()
@@ -128,7 +86,8 @@ namespace NSUNS4_Character_Manager
 			AwkAction.Clear();
 			ItemList.Clear();
 			ItemCount.Clear();
-			listBox1.ClearSelected();
+            Partner.Clear();
+            listBox1.ClearSelected();
 			listBox1.Items.Clear();
 			EntryCount = 1;
 			BinPath.Add("Z:/param/player/Converter/bin/1newprm_bas.bin");
@@ -924,19 +883,30 @@ namespace NSUNS4_Character_Manager
 				itemc[x] = 0;
 			}
 			ItemCount.Add(itemc);
-			listBox1.Items.Add(BinName[0]);
+            Partner.Add("");
+            listBox1.Items.Add(BinName[0]);
 		}
 
-		public void OpenFile()
+		public void OpenFile(string basepath = "")
 		{
 			OpenFileDialog o = new OpenFileDialog();
 			o.DefaultExt = "xfbin";
-			o.ShowDialog();
+
+            if(basepath == "")
+            {
+                o.ShowDialog();
+            }
+            else
+            {
+                o.FileName = basepath;
+            }
+
 			if (!(o.FileName != "") || !File.Exists(o.FileName))
 			{
 				return;
 			}
 			FileOpen = true;
+
 			listBox1.Items.Clear();
 			EntryCount = 0;
 			BinPath.Clear();
@@ -950,10 +920,11 @@ namespace NSUNS4_Character_Manager
 			AwkAction.Clear();
 			ItemList.Clear();
 			ItemCount.Clear();
-			FilePath = o.FileName;
+            Partner.Clear();
+            FilePath = o.FileName;
 			byte[] FileBytes = File.ReadAllBytes(FilePath);
 			EntryCount = Main.b_byteArrayToIntRev(Main.b_ReadByteArray(FileBytes, 36, 4)) - 1;
-			MessageBox.Show("This file contains " + EntryCount.ToString("X2") + " entries.");
+            if (this.Visible) MessageBox.Show("This file contains " + EntryCount.ToString("X2") + " entries.");
 			int Index3 = 128;
 			for (int x3 = 0; x3 < EntryCount; x3++)
 			{
@@ -1018,7 +989,8 @@ namespace NSUNS4_Character_Manager
 						itemcount[i] = count;
 					}
 				}
-				CharaList.Add(characodeid);
+                string partner = Main.b_ReadString(FileBytes, _ptr + 328);
+                CharaList.Add(characodeid);
 				CostumeList.Add(costumeid);
 				AwkCostumeList.Add(awkcostumeid);
 				DefaultAssist1.Add(defAssist3);
@@ -1026,7 +998,8 @@ namespace NSUNS4_Character_Manager
 				AwkAction.Add(awkaction);
 				ItemList.Add(itemlist);
 				ItemCount.Add(itemcount);
-				listBox1.Items.Add(BinName[x]);
+                Partner.Add(partner);
+                listBox1.Items.Add(BinName[x]);
 			}
 			Index3++;
 		}
@@ -1041,7 +1014,7 @@ namespace NSUNS4_Character_Manager
 				}
 				File.Copy(FilePath, FilePath + ".backup");
 				File.WriteAllBytes(FilePath, ConvertToFile());
-				MessageBox.Show("File saved to " + FilePath + ".");
+                if (this.Visible) MessageBox.Show("File saved to " + FilePath + ".");
 			}
 			else
 			{
@@ -1889,7 +1862,8 @@ namespace NSUNS4_Character_Manager
 				(byte)w_itemc3.Value,
 				(byte)w_itemc4.Value
 			});
-			listBox1.Items.Add(BinName[actualEntry]);
+            Partner.Add(w_partner.Text);
+            listBox1.Items.Add(BinName[actualEntry]);
 			listBox1.SelectedIndex = actualEntry;
 		}
 
@@ -1920,7 +1894,8 @@ namespace NSUNS4_Character_Manager
 					AwkAction.RemoveAt(x);
 					ItemList.RemoveAt(x);
 					ItemCount.RemoveAt(x);
-					listBox1.Items.RemoveAt(x);
+                    Partner.RemoveAt(x);
+                    listBox1.Items.RemoveAt(x);
 				}
 				else
 				{
@@ -1958,7 +1933,8 @@ namespace NSUNS4_Character_Manager
 					(byte)w_itemc3.Value,
 					(byte)w_itemc4.Value
 				};
-				listBox1.Items[x] = BinName[x];
+                Partner[x] = w_partner.Text;
+                listBox1.Items[x] = BinName[x];
 			}
 			else
 			{
@@ -1968,8 +1944,10 @@ namespace NSUNS4_Character_Manager
 
 		public byte[] ConvertToFile()
 		{
+            // Build the header
 			int totalLength4 = 0;
-			byte[] fileBytes36 = new byte[0];
+
+            byte[] fileBytes36 = new byte[0];
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[127]
 			{
 				78,
@@ -2100,38 +2078,48 @@ namespace NSUNS4_Character_Manager
 				120,
 				0
 			});
-			int PtrNucc = fileBytes36.Length;
+
+            int PtrNucc = fileBytes36.Length;
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
-			for (int x6 = 0; x6 < EntryCount; x6++)
+
+            for (int x6 = 0; x6 < EntryCount; x6++)
 			{
 				fileBytes36 = Main.b_AddString(fileBytes36, BinPath[x6]);
 				fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
 			}
-			int PtrPath = fileBytes36.Length;
+
+            int PtrPath = fileBytes36.Length;
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
-			for (int x5 = 0; x5 < 1; x5++)
+
+            for (int x5 = 0; x5 < 1; x5++)
 			{
 				fileBytes36 = Main.b_AddString(fileBytes36, BinName[x5]);
 				fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
 			}
-			fileBytes36 = Main.b_AddString(fileBytes36, "Page0");
+
+            fileBytes36 = Main.b_AddString(fileBytes36, "Page0");
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
 			fileBytes36 = Main.b_AddString(fileBytes36, "index");
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
-			for (int x4 = 1; x4 < EntryCount; x4++)
+
+            for (int x4 = 1; x4 < EntryCount; x4++)
 			{
 				fileBytes36 = Main.b_AddString(fileBytes36, BinName[x4]);
 				fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
 			}
-			int PtrName = fileBytes36.Length;
+
+            int PtrName = fileBytes36.Length;
 			totalLength4 = PtrName;
 			int AddedBytes = 0;
-			while (fileBytes36.Length % 4 != 0)
+
+            while (fileBytes36.Length % 4 != 0)
 			{
 				AddedBytes++;
 				fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[1]);
 			}
-			totalLength4 = fileBytes36.Length;
+
+            // Build bin1
+            totalLength4 = fileBytes36.Length;
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[48]
 			{
 				0,
@@ -2183,7 +2171,8 @@ namespace NSUNS4_Character_Manager
 				0,
 				3
 			});
-			for (int x3 = 1; x3 < EntryCount; x3++)
+
+            for (int x3 = 1; x3 < EntryCount; x3++)
 			{
 				int actualEntry = x3 - 1;
 				fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[4]
@@ -2198,6 +2187,7 @@ namespace NSUNS4_Character_Manager
 				fileBytes36 = Main.b_AddBytes(fileBytes36, xbyte, 1);
 				fileBytes36 = Main.b_AddBytes(fileBytes36, ybyte, 1);
 			}
+
 			int PtrSection = fileBytes36.Length;
 			fileBytes36 = Main.b_AddBytes(fileBytes36, new byte[16]
 			{
@@ -2239,7 +2229,9 @@ namespace NSUNS4_Character_Manager
 					3
 				});
 			}
+
 			totalLength4 = fileBytes36.Length;
+
 			int PathLength = PtrPath - 127;
 			int NameLength = PtrName - PtrPath;
 			int Section1Length = PtrSection - PtrName - AddedBytes;
@@ -2382,7 +2374,8 @@ namespace NSUNS4_Character_Manager
 				fileBytes36[_ptr + 610] = ItemCount[x][2];
 				fileBytes36 = Main.b_ReplaceString(fileBytes36, ItemList[x][3], _ptr + 612, 16);
 				fileBytes36[_ptr + 642] = ItemCount[x][3];
-			}
+                fileBytes36 = Main.b_ReplaceString(fileBytes36, Partner[x], _ptr + 328);
+            }
 			return Main.b_AddBytes(fileBytes36, new byte[20]
 			{
 				0,
@@ -2563,7 +2556,8 @@ namespace NSUNS4_Character_Manager
 				w_itemc3.Value = ItemCount[x][2];
 				w_item4.Text = ItemList[x][3];
 				w_itemc4.Value = ItemCount[x][3];
-			}
+                w_partner.Text = Partner[x];
+            }
 			else
 			{
                 w_charaprmbas.Text = "";
@@ -2579,6 +2573,7 @@ namespace NSUNS4_Character_Manager
 				w_itemc3.Value = 0m;
 				w_item4.Text = "";
 				w_itemc4.Value = 0m;
+                w_partner.Text = "";
 			}
 		}
 
@@ -2632,6 +2627,8 @@ namespace NSUNS4_Character_Manager
             this.w_item4 = new System.Windows.Forms.TextBox();
             this.w_charaprmbas = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.w_partner = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.w_itemc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.w_itemc2)).BeginInit();
@@ -2644,15 +2641,15 @@ namespace NSUNS4_Character_Manager
             this.listBox1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(13, 30);
+            this.listBox1.Location = new System.Drawing.Point(13, 39);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(293, 409);
+            this.listBox1.Size = new System.Drawing.Size(293, 439);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(313, 444);
+            this.button1.Location = new System.Drawing.Point(313, 486);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(352, 23);
             this.button1.TabIndex = 1;
@@ -2662,7 +2659,7 @@ namespace NSUNS4_Character_Manager
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(313, 415);
+            this.button2.Location = new System.Drawing.Point(313, 456);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(352, 23);
             this.button2.TabIndex = 2;
@@ -2672,7 +2669,7 @@ namespace NSUNS4_Character_Manager
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(13, 444);
+            this.button3.Location = new System.Drawing.Point(13, 486);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(293, 23);
             this.button3.TabIndex = 3;
@@ -2855,7 +2852,7 @@ namespace NSUNS4_Character_Manager
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(497, 239);
+            this.label7.Location = new System.Drawing.Point(498, 275);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 22;
@@ -2962,11 +2959,30 @@ namespace NSUNS4_Character_Manager
             this.label9.TabIndex = 31;
             this.label9.Text = "Character ID for prmbas";
             // 
+            // w_partner
+            // 
+            this.w_partner.Location = new System.Drawing.Point(313, 427);
+            this.w_partner.MaxLength = 8;
+            this.w_partner.Name = "w_partner";
+            this.w_partner.Size = new System.Drawing.Size(352, 20);
+            this.w_partner.TabIndex = 34;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(312, 411);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Partner:";
+            // 
             // Tool_DuelPlayerParamEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 479);
+            this.ClientSize = new System.Drawing.Size(674, 521);
+            this.Controls.Add(this.w_partner);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.w_charaprmbas);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.w_itemc4);
@@ -2999,6 +3015,7 @@ namespace NSUNS4_Character_Manager
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Tool_DuelPlayerParamEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel Player Param Editor";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

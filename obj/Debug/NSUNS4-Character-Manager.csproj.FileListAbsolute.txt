@@ -13,3 +13,16 @@ C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4-Character-Manager.csproj.CopyComplete
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4 Character Manager.exe
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4 Character Manager.pdb
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_PlayerSettingParamEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_AddCostume.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_AddCharacter.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_SkillCustomizeParamEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Functions.Tool_ExportCostume.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Misc.Tool_TextureReplacer.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\Properties.Resources.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_CharacodeEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_DuelPlayerParamEditor_Costumes.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_RosterEditor_PositionData.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_UnlockCharaTotalEditor.resources
