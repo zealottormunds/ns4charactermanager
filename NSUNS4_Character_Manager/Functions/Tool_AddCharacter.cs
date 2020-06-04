@@ -180,6 +180,8 @@ namespace NSUNS4_Character_Manager
             dpp.SaveFile();
             psp.SaveFile();
             csp.SaveFile();
+
+            MessageBox.Show("Finished adding character. Please add an entry to SkillCustomizeParam and SpSkillCustomizeParam manually for your character to work. Otherwise, it will crash when picked.");
         }
     }
 }

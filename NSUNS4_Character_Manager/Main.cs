@@ -673,16 +673,15 @@ namespace NSUNS4_Character_Manager
             // addCostumeToolStripMenuItem
             // 
             this.addCostumeToolStripMenuItem.Name = "addCostumeToolStripMenuItem";
-            this.addCostumeToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.addCostumeToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.addCostumeToolStripMenuItem.Text = "Add new costume (Experimental)";
             this.addCostumeToolStripMenuItem.Click += new System.EventHandler(this.addCostumeToolStripMenuItem_Click);
             // 
             // addNewCharacterToolStripMenuItem
             // 
-            this.addNewCharacterToolStripMenuItem.Enabled = false;
             this.addNewCharacterToolStripMenuItem.Name = "addNewCharacterToolStripMenuItem";
-            this.addNewCharacterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addNewCharacterToolStripMenuItem.Text = "Add new character";
+            this.addNewCharacterToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.addNewCharacterToolStripMenuItem.Text = "Add new character (Experimental)";
             this.addNewCharacterToolStripMenuItem.Click += new System.EventHandler(this.addNewCharacterToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
