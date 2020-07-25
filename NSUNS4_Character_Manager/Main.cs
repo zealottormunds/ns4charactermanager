@@ -47,6 +47,8 @@ namespace NSUNS4_Character_Manager
         private ToolStripMenuItem pathToDatawin32ToolStripMenuItem;
         private Label label3;
         private Button button13;
+        private Button button14;
+        private Button button15;
         public string cspPath = "[null]";
 
         public Main()
@@ -354,25 +356,6 @@ namespace NSUNS4_Character_Manager
                 }
             }
 
-            /*while (found == false && actualIndex < (actual.Length - bytes.Length))
-            {
-                for(int x = 0; x < bytes.Length; x++)
-                {
-                    actualBytes[x] = actual[actualIndex + x];
-
-                    if(actualBytes[x] != bytes[x])
-                    {
-                        x = bytes.Length;
-                        actualIndex = actualIndex + 1;
-                    }
-                }
-
-                if(actualBytes == bytes)
-                {
-                    found = true;
-                }
-            }*/
-
             return foundIndex;
         }
 
@@ -513,6 +496,8 @@ namespace NSUNS4_Character_Manager
             this.button12 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -568,7 +553,7 @@ namespace NSUNS4_Character_Manager
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(14, 357);
+            this.button6.Location = new System.Drawing.Point(14, 406);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(436, 30);
             this.button6.TabIndex = 6;
@@ -578,7 +563,7 @@ namespace NSUNS4_Character_Manager
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(233, 393);
+            this.button7.Location = new System.Drawing.Point(233, 442);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(217, 30);
             this.button7.TabIndex = 7;
@@ -694,7 +679,7 @@ namespace NSUNS4_Character_Manager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 341);
+            this.label1.Location = new System.Drawing.Point(14, 390);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 9;
@@ -711,9 +696,9 @@ namespace NSUNS4_Character_Manager
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(14, 174);
+            this.button8.Location = new System.Drawing.Point(233, 174);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(213, 36);
+            this.button8.Size = new System.Drawing.Size(217, 36);
             this.button8.TabIndex = 11;
             this.button8.Text = "Spcload Editor";
             this.button8.UseVisualStyleBackColor = true;
@@ -741,18 +726,18 @@ namespace NSUNS4_Character_Manager
             // 
             // button11
             // 
-            this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(233, 174);
+            this.button11.Location = new System.Drawing.Point(14, 174);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(217, 36);
+            this.button11.Size = new System.Drawing.Size(213, 36);
             this.button11.TabIndex = 14;
-            this.button11.Text = "Player_Icon Editor";
+            this.button11.Text = "Prm Moveset Editor";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
             this.button12.Enabled = false;
-            this.button12.Location = new System.Drawing.Point(14, 393);
+            this.button12.Location = new System.Drawing.Point(14, 442);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(213, 30);
             this.button12.TabIndex = 16;
@@ -762,7 +747,7 @@ namespace NSUNS4_Character_Manager
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 277);
+            this.label3.Location = new System.Drawing.Point(14, 341);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 17;
@@ -770,19 +755,41 @@ namespace NSUNS4_Character_Manager
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(14, 293);
+            this.button13.Location = new System.Drawing.Point(14, 357);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(436, 30);
+            this.button13.Size = new System.Drawing.Size(213, 30);
             this.button13.TabIndex = 18;
             this.button13.Text = "Xfbin Texture Replacer";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(233, 357);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(213, 30);
+            this.button14.TabIndex = 19;
+            this.button14.Text = "Xfbin Path List";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Enabled = false;
+            this.button15.Location = new System.Drawing.Point(14, 260);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(436, 36);
+            this.button15.TabIndex = 20;
+            this.button15.Text = "Player_Icon Editor";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 435);
+            this.ClientSize = new System.Drawing.Size(464, 484);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button12);
@@ -899,6 +906,18 @@ namespace NSUNS4_Character_Manager
         private void button13_Click(object sender, EventArgs e)
         {
             Misc.Tool_TextureReplacer t = new Misc.Tool_TextureReplacer();
+            t.ShowDialog();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Misc.Tool_PathList t = new Misc.Tool_PathList();
+            t.ShowDialog();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Tools.Tool_MovesetCoder t = new Tools.Tool_MovesetCoder();
             t.ShowDialog();
         }
     }

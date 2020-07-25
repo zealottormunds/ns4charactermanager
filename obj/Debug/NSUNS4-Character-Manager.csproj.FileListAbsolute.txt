@@ -26,3 +26,5 @@ C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_DuelPlayerParamEditor_Costumes.resources
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_RosterEditor_PositionData.resources
 C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tool_UnlockCharaTotalEditor.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Misc.Tool_PathList.resources
+C:\Users\santi\Documentos\GitHub\ns4charactermanager\obj\Debug\NSUNS4_Character_Manager.Tools.Tool_MovesetCoder.resources

@@ -329,6 +329,10 @@ namespace NSUNS4_Character_Manager.Misc
                     thisNtp3Size = thisNtp3Size + gidxHeaderSizes[x][y];
                     thisNtp3Size = thisNtp3Size + textureData[x][y].Length;
                 }
+                // Fix res before NTP3
+                byte[] res = Main.b_ReadByteArray(gidxHeaders[x][0], 0x14, 4);
+                actual = Main.b_ReplaceBytes(actual, res, actual.Length - 0x10 - 0xA);
+
                 // Fix size before NTP3
                 actual = Main.b_ReplaceBytes(actual, BitConverter.GetBytes(thisNtp3Size), actual.Length - 0x10 - 0x4, 1);
 

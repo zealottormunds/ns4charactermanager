@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NSUNS4_Character_Manager
 {
@@ -139,6 +140,46 @@ namespace NSUNS4_Character_Manager
             }
 
             return actual;
+        }
+
+        // Find string
+        public static int FindString(byte[] fileBytes, string toFind, int startIndex = 0)
+        {
+            return FindBytes(fileBytes, Encoding.ASCII.GetBytes(toFind), startIndex);
+        }
+
+        // Find bytes
+        public static int FindBytes(byte[] fileBytes, byte[] toFind, int startIndex = 0)
+        {
+            int ind = -1;
+
+            for(int x = startIndex; x < fileBytes.Length; x++)
+            {
+                bool found = true;
+                int actual = 0;
+                for(int y = 0; y < toFind.Length; y++)
+                {
+                    if(fileBytes[x + y] != toFind[actual])
+                    {
+                        //MessageBox.Show(actual.ToString("X2") + ": " + fileBytes[x + y].ToString("X2") + " != " + toFind[actual].ToString("X2"));
+                        found = false;
+                        y = toFind.Length;
+                    }
+                    else
+                    {
+                        //MessageBox.Show(actual.ToString("X2") + ": " + fileBytes[x + y].ToString("X2") + " == " + toFind[actual].ToString("X2"));
+                        actual++;
+                    }
+                }
+
+                if(found)
+                {
+                    ind = x;
+                    x = fileBytes.Length;
+                }
+            }
+
+            return ind;
         }
     }
 }

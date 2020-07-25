@@ -62,6 +62,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NSUNS4_Character_Manager\Misc\DxtUtil.cs" />
+    <Compile Include="NSUNS4_Character_Manager\Misc\Tool_PathList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NSUNS4_Character_Manager\Misc\Tool_PathList.Designer.cs">
+      <DependentUpon>Tool_PathList.cs</DependentUpon>
+    </Compile>
     <Compile Include="NSUNS4_Character_Manager\Misc\Tool_TextureReplacer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="NSUNS4_Character_Manager\Tools\Tool_DuelPlayerParamEditor_Costumes.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NSUNS4_Character_Manager\Tools\Tool_MovesetCoder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NSUNS4_Character_Manager\Tools\Tool_MovesetCoder.Designer.cs">
+      <DependentUpon>Tool_MovesetCoder.cs</DependentUpon>
     </Compile>
     <Compile Include="NSUNS4_Character_Manager\Tools\Tool_PlayerSettingParamEditor.cs">
       <SubType>Form</SubType>
@@ -135,6 +147,9 @@
     <EmbeddedResource Include="NSUNS4_Character_Manager\Functions\Tool_AddCostume.resx">
       <DependentUpon>Tool_AddCostume.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NSUNS4_Character_Manager\Misc\Tool_PathList.resx">
+      <DependentUpon>Tool_PathList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NSUNS4_Character_Manager\Misc\Tool_TextureReplacer.resx">
       <DependentUpon>Tool_TextureReplacer.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NSUNS4_Character_Manager\Tools\Tool_DuelPlayerParamEditor_Costumes.resx">
       <DependentUpon>Tool_DuelPlayerParamEditor_Costumes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NSUNS4_Character_Manager\Tools\Tool_MovesetCoder.resx">
+      <DependentUpon>Tool_MovesetCoder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NSUNS4_Character_Manager\Tools\Tool_PlayerSettingParamEditor.resx">
       <DependentUpon>Tool_PlayerSettingParamEditor.cs</DependentUpon>

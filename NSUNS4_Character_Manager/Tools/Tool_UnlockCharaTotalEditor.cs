@@ -854,6 +854,7 @@ namespace NSUNS4_Character_Manager
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ListBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Tool_UnlockCharaTotalEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

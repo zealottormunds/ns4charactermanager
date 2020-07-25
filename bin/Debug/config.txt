@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\data_win32
+C:\Program Files (x86)\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\data_win32\spc\characode.bin.xfbin
+C:\Program Files (x86)\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\data_win32\spc\duelPlayerParam.xfbin
+C:\Program Files (x86)\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\data_win32\spc\WIN64\playerSettingParam.bin.xfbin
+
+C:\Program Files (x86)\Steam\steamapps\common\NARUTO SHIPPUDEN Ultimate Ninja STORM 4\data_win32\ui\max\select\WIN64\characterSelectParam.xfbin
