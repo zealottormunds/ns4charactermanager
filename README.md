@@ -1,6 +1,8 @@
 # Naruto: Storm 4 Character Manager
 by Zealot Tormunds
 
+<img src="https://i.imgur.com/YQTWRHL.png">
+
 #### Features:
 - Add brand new characters
 - Add brand new costumes
