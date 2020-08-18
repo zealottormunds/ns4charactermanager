@@ -819,7 +819,7 @@ namespace NSUNS4_Character_Manager.Tools
             int newsel = listBox1.SelectedIndex;
             listBox1.SelectedIndex = newsel;
 
-            listBox1.Items.RemoveAt(actualanm);
+            anm_list.Items.RemoveAt(actualanm);
             plAnmList[actualver].RemoveAt(actualanm);
             movementList[actualver].RemoveAt(actualanm);
         }

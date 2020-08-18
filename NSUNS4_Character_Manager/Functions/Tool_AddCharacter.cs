@@ -138,7 +138,13 @@ namespace NSUNS4_Character_Manager
             int rosterId = -1;
             for (int x = 0; x < csp.EntryCount; x++)
             {
-                if (basechar == csp.CharacterList[x].Substring(0, basechar.Length))
+                //if (basechar == csp.CharacterList[x].Substring(0, basechar.Length))
+                if(csp.PageList[x] == 2 && csp.PositionList[x] == 0x18)
+                {
+                    MessageBox.Show(csp.CharacterList[x]);
+                }
+
+                if(csp.CharacterList[x].Contains(basechar))
                 {
                     rosterId = x;
                     x = csp.EntryCount;
