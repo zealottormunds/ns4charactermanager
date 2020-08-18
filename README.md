@@ -1,4 +1,5 @@
-# Naruto: Storm 4 - Character Manager by Zealot Tormunds
+# Naruto: Storm 4 Character Manager
+by Zealot Tormunds
 
 #### Features:
 - Add brand new characters
