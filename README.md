@@ -1,6 +1,6 @@
 # Naruto: Storm 4 - Character Manager by Zealot Tormunds
 
-Special thanks:
+#### Special thanks:
 - Kuroha Saenoki
 - EliteAce
 - Valant96
